@@ -1,0 +1,56 @@
+<html>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="d3pie.min.js"></script>
+<script src="ratings.js"></script>
+
+<div align="center" id="myRatings"></div>
+<script>
+
+  var pie = new d3pie("myRatings", {
+    header: {
+        title: {
+          text: 'Reviews for Restaurant: ' + data['name'] + ", " + data['city'],
+          fontSize: 30
+        }
+    },
+    size: {
+      canvasHeight: 700,
+      canvasWidth: 700
+    },
+    labels: {
+      outer: {
+        format: 'label'
+      },
+      percentage: {
+        fontSize: 15
+      }
+    },
+    data: {
+      content: [
+        { label: 'Excellent', value: data['excellent']},
+        { label: 'Poor', value: data['poor'] },
+        { label: 'Average', value: data['average'] },
+        { label: 'Good', value: data['good']},
+        { label: 'Below Average', value: data['below average']},
+      ]
+    },
+    tooltips: {
+      enabled: true,
+      type: "placeholder",
+      string: "{label}: {percentage}%",
+      styles: {
+        fadeInSpeed: 500,
+        backgroundColor: "#00CC99",
+        backgroundOpacity: 0.8,
+        color: "#FFFFCC",
+        borderRadius: 4,
+        font: "Verdana",
+        fontSize: 15,
+        padding: 20
+      }
+    }
+
+  })
+
+</script>
+</html>
